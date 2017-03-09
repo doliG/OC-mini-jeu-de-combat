@@ -50,8 +50,6 @@ class PersoManager
         $query->bindValue(':damage', $perso->getDamage(), PDO::PARAM_INT);
         $query->bindValue(':id', $perso->getId(), PDO::PARAM_INT);
 
-        var_dump($sql);
-        var_dump($perso);
         $query->execute();
     }
 
