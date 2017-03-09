@@ -12,21 +12,21 @@ class Perso
 
     public function hit(Perso $perso)
     {
-    if ($perso->getId() == $this->getId()) {
-    return self::ITS_ME;
-    }
-    return $perso->takeDamage();
+        if ($perso->getId() == $this->getId()) {
+            return self::ITS_ME;
+        }
+        return $perso->takeDamage();
     }
 
     public function takeDamage()
     {
-    $this->_damage += 5;
-    return ($this->_damage >= 100) ? self::IM_DOWN : self::IM_HIT;
+        $this->_damage += 5;
+        return ($this->_damage >= 100) ? self::IM_DOWN : self::IM_HIT;
     }
 
     public function validName()
     {
-    return !empty($this->_name);
+        return !empty($this->_name);
     }
 
     /**
@@ -34,17 +34,17 @@ class Perso
      */
     public function getId()
     {
-    return $this->_id;
+        return $this->_id;
     }
 
     public function getName()
     {
-    return $this->_name;
+        return $this->_name;
     }
 
     public function getDamage()
     {
-    return $this->_damage;
+        return $this->_damage;
     }
 
     /**
@@ -52,27 +52,27 @@ class Perso
      */
     public function setId($newId)
     {
-    $newId = (int) $newId;
+        $newId = (int) $newId;
 
-    if ($newId > 0) {
-    $this->_id = $newId;
-    }
+        if ($newId > 0) {
+            $this->_id = $newId;
+        }
     }
 
     public function setName($newName)
     {
-    if (is_string($newName)) {
-    $this->_name = $newName;
-    }
+        if (is_string($newName)) {
+            $this->_name = $newName;
+        }
     }
 
     public function setDamage($newDamage)
     {
-    $newDamage = (int) $newDamage;
+        $newDamage = (int) $newDamage;
 
-    if ($newDamage >= 0 && $newDamage <= 100) {
-    $this->_damage = $newDamage;
-    }
+        if ($newDamage >= 0 && $newDamage <= 100) {
+            $this->_damage = $newDamage;
+        }
     }
 
     /**
@@ -81,13 +81,13 @@ class Perso
      */
     public function hydrate(array $data)
     {
-    foreach ($data as $key => $value) {
-    $method = 'set'.ucfirst($key);
+        foreach ($data as $key => $value) {
+            $method = 'set'.ucfirst($key);
 
-    if (method_exists($this, $method)) {
-    $this->$method($value);
-    }
-    }
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
     }
 
     /**
@@ -96,6 +96,6 @@ class Perso
      */
     public function __construct(array $data)
     {
-    $this->hydrate($data);
+        $this->hydrate($data);
     }
 }
